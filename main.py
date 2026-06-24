@@ -22,3 +22,9 @@ def get_price(zip_code: str):
     return {
         "price": PRICE_MAP.get(zip_code, 1999)
     }
+
+@app.get("/proxy")
+def proxy(zip_code: str):
+    return {
+        "price":PRICE_MAP.get(zip_code, 1999)
+    }
