@@ -1,0 +1,34 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "ab215e77f659b9939b93c5bdb109080d"
+name = "Zip Pricing App"
+application_url = "https://example.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+include_config_on_deploy = true
+
+[webhooks]
+api_version = "2026-04"
+
+[access.admin]
+direct_api_mode = "online"
+embedded_app_direct_api_access = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = ""
+optional_scopes = [ ]
+use_legacy_install_flow = false
+
+[auth]
+redirect_urls = [ ]
+
+[app_proxy]
+url = "https://zip-pricing-api-2.onrender.com/proxy"
+subpath = "zip-pricing"
+prefix = "apps"
+
+[sidekick]
+extensions_summary = "ZIP code pricing widget for Shopify stores"

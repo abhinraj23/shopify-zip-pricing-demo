@@ -1,0 +1,75 @@
+<div class="zip-pricing-widget">
+  <input
+    type="text"
+    id="zip-code"
+    placeholder="Enter ZIP Code"
+  >
+
+<button type="button" class="zip-btn" onclick="checkPrice()">
+  Check Price
+</button>
+
+  <div id="price-result"></div>
+</div>
+
+<style>
+.zip-pricing-widget {
+  margin: 15px 0;
+}
+
+#zip-code {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 180px;
+}
+
+.zip-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+.zip-btn:hover {
+  opacity: 0.85;
+}
+
+#price-result {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+</style>
+<script>
+async function checkPrice() {
+  const zip = document.getElementById("zip-code").value;
+
+  try {
+    const response = await fetch(
+      "/apps/zip-pricing?zip_code=" + encodeURIComponent(zip)
+    );
+
+    const data = await response.json();
+
+    document.getElementById("price-result").innerHTML =
+      "Price: $" + data.price;
+  } catch (error) {
+    document.getElementById("price-result").innerHTML =
+      "Unable to fetch price";
+  }
+}
+</script>
+
+{% schema %}
+{
+  "name": "ZIP Pricing Widget",
+  "target": "section",
+  "settings": []
+}
+{% endschema %}
